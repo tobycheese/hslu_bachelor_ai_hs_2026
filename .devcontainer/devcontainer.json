@@ -1,0 +1,66 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/universal
+{
+	"name": "Default Linux Universal",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+	// Declared explicitly so Codespaces registers these ports with the forwarding
+	// service at attach time and re-registers them on resume/reconnect, instead of
+	// relying on auto-detection scraping localhost URLs out of terminal output.
+	"forwardPorts": [
+		3000,
+		5001,
+		8080,
+		8085,
+		9090,
+		9102
+	],
+	"portsAttributes": {
+		"3000": {
+			"label": "grafana",
+			"onAutoForward": "silent"
+		},
+		"5001": {
+			"label": "model-registry",
+			"onAutoForward": "silent"
+		},
+		"8080": {
+			"label": "dev-env",
+			"onAutoForward": "silent"
+		},
+		"8085": {
+			"label": "event-streaming",
+			"onAutoForward": "silent"
+		},
+		"9090": {
+			"label": "prometheus",
+			"onAutoForward": "silent"
+		},
+		"9102": {
+			"label": "statsd",
+			"onAutoForward": "silent"
+		}
+	},
+	"hostRequirements": {
+		"cpus": 4,
+		"memory": "16gb",
+		"storage": "32gb"
+	}
+	// unused because it was confusing and opened many ports: plugin to show html exercises in vscode
+	//,
+	// "customizations": {
+	// 	"vscode": {
+	// 		"extensions": [
+	// 			"ms-vscode.live-server"
+	// 		]
+	// 	}
+	// }
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": [],	
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
